@@ -1,0 +1,10 @@
+
+<%= form_tag "/home/deroulant", method: "post" do %>
+<select name="post[person_id]">
+    <option value="1">Par date</option>
+    <option value="2">Par cout</option>
+    <option value="3">Par nombre de participant</option>
+  </select>
+  <input name="commit" type="submit" value="Trier" /> 
+<% end %>
+

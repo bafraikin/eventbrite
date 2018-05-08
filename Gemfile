@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 #gem'pundit'
 
+gem 'dotenv'
 gem 'devise'
 gem 'faker'
 gem 'pry'

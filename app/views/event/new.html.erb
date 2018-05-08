@@ -1,0 +1,25 @@
+
+
+<h1>Ici tu vas pouvoir creer ton l'event de tes reves</h1>
+
+<%= form_tag "/events/create", method: "post" do %>
+  <b>Nom:</b>
+  <br>
+  <input type="string" name="name" input=""/>
+  <br>
+  <b>Description:</b>
+  <br>
+  <%= text_area_tag(:description, "", size: "24x6") %>
+  <br>
+  <b>Prix:</b>
+  <br>
+  <input type="integer" name="price" />
+  <br>
+  <b>Date:</b>
+  <br>
+  <%= date_field(:events, :date) %>
+  <br>
+  <input type="submit" value="Creer" />
+  <br>
+<% end %>
+

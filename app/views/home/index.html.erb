@@ -1,17 +1,33 @@
-<ul>
+<ul style="display: flex; justify-content: flex-end; margin-right: 50px; padding-left: 10px;">
   <%if user_signed_in? %>  
-
-    <li> <%= current_user.name %> </li>
     <li>  <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
     <li>  <%= link_to "Edit", edit_user_registration_path%>      </li>
+</ul>
   <%else%>
     <li>  <%= link_to "Sign in", new_user_session_path %> </li>
     <li>  <%= link_to "Sign UP", new_user_registration_path %> </li>
+    </ul>
   <%end%>
-</ul>
 
+<br>
+<br>
+<% if  user_signed_in?%>
+  <p>Coucou <%= current_user.name %> </p>
+    <p> <b>Creer ton evenement</b> <%= link_to "Create", new_event_path%> </p>
+    <% else %>
+      <b> Inscrit/Connecte toi pour pouvoir rejoindre des evenements ou creer le tiens</b>
+<% end %>
 
+<h1>Tout les evenements crées     <%= render :partial => "home/deroulant" %></h1>
+<br>
+<%@events.each do | event |%>
+  <p>nom de l'evenement: <%=event.name %> <%= (event.creator_id == current_user.id) ? (link_to "Edit", "#") : (link_to "Inspect/Sign", "#") %> </p>
+<p>date: <%= event.date %></p>
+<p>cout:<%= event.price %></p>
+<p>description:</p>
+<%= event.description%>
+<br>
+<br>
 
+<%end%>
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
