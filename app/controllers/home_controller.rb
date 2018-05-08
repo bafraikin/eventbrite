@@ -1,15 +1,14 @@
 class HomeController < ApplicationController
   def index
     @events = Event.all
+    if params[:id]
+
+    end
   end
 
   def deroulant
-    @tab = []
-    @tab[0] = "coucou"
-    @tab[0] = "bite"
-    @tab[0] = "courgette"
-    
 
+redirect_to "/#{params[:post][:person_id]}"
 
   end
 end
