@@ -1,5 +1,7 @@
 <h1>Enorme cette event</h1>
 
+
+
 <p>Nom de l'event</p>
 <%= @event.name %><br>
 <p>Date</p>
@@ -8,5 +10,36 @@
 <%= @event.price %><br>
 <p>Description</p>
 <%= @event.description%><br>
+
+<% coucou = false %>
+<% @event.attendees.each do | attendee | %>
+  <%   if attendee[:id] == current_user.id %>
+    <% coucou = true %>
+  <% end %>
+<% end %>
+<% puts coucou %>
+<% if coucou %>
+  <p>Tu participes deja</p>
+<% else %>
+  <%= form_tag join_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                                          data-description="A month's subscription"
+                                                          data-amount="#{@amount}"
+                                                          data-locale="auto"></script>
+  <% end %>
+
+
+<% end %>
+
+
+
 
 
