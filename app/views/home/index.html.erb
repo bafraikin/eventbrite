@@ -21,7 +21,7 @@
 <h1>Tout les evenements crées     <%= render :partial => "home/deroulant" %></h1>
 <br>
 <%@events.each do | event |%>
-  <p><b>nom de l'evenement:  <%=event.name %> </b> <i> <%= (user_signed_in?) ?  ((event.creator_id == current_user.id) ? (link_to "Edit", "#") : (link_to "Inspect/Sign", "/events/#{event.id}")) : ("" )%></i> </p>
+  <p><b>nom de l'evenement:  <%=event.name %> </b> <i> <%= (user_signed_in?) ?  ((event.creator_id == current_user.id) ? (link_to "Edit", "events/#{event.id}/edit") : (link_to "Inspect/Sign", "/events/#{event.id}")) : ("" )%></i> </p>
 <p>date: <%= event.date %></p>
 <p>cout:<%= event.price %></p>
 <p>description:</p>

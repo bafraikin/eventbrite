@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   root to: 'home#index', as: 'root'
   get '/events/new', to: 'event#new', as: "new_event"
   post '/events/create', to: 'event#create'
-  get '/events/:id/edit', to: 'event#edit' 
-  get '/events/:id', to: 'event#show'
+  get '/events/:id/edit', to: 'event#edit'
+  patch '/events/:id', to: 'event#update', as: "edit_event"
+  delete '/events/:id', to: 'event#destroy'  
+  get '/events/:id', to: 'event#show', as: "event"
+
   get '/:id', to: 'home#index'
   post 'home/deroulant'
   devise_for :users

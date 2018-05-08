@@ -14,10 +14,20 @@ redirect_to "/"
 
   def edit
     @event = Event.find(params[:id])
+    
   end
 
-  def destroy
+def update
+    event = Event.find(params[:id])
+   permitted =  params.require(:event).permit(:name, :description, :date, :price)
+    event.update(permitted)
+    redirect_to "/"
+end
 
+  def destroy
+    event = Event.find(params[:id])
+    event.delete
+    redirect_to "/" 
   end
 
   def show
