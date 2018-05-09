@@ -14,7 +14,6 @@ class EventController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-
   end
 
   def update
@@ -51,7 +50,6 @@ class EventController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to "/events/#{@event.id}"
-
 
   end
 end
